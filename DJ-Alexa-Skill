@@ -1,0 +1,40 @@
+{
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",  
+        "samples": []  
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+	{
+        
+	"name": "AMAZON.PauseIntent",
+
+	"samples": []
+      
+	},
+      
+	{
+        
+	"name": "AMAZON.ResumeIntent",
+        
+	"samples": []
+      
+	},
+      {
+        "name": "DJSaysMookTok",
+        "samples": [
+            "hey man, it's a bunch of mook toks out here",
+            "mook tok",
+            "all these mook toks drivin today"
+        ],
+        "slots": []
+      }
+    ]
+  }
