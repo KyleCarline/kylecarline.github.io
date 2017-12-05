@@ -1,40 +1,36 @@
-{
-    "intents": [
-      {
-        "name": "AMAZON.CancelIntent",  
-        "samples": []  
-      },
-      {
-        "name": "AMAZON.HelpIntent",
-        "samples": []
-      },
-      {
-        "name": "AMAZON.StopIntent",
-        "samples": []
-      },
-	{
-        
-	"name": "AMAZON.PauseIntent",
+ 'use strict';
+const Alexa = require("alexa-sdk");
 
-	"samples": []
-      
-	},
-      
-	{
-        
-	"name": "AMAZON.ResumeIntent",
-        
-	"samples": []
-      
-	},
-      {
-        "name": "DJSaysMookTok",
-        "samples": [
-            "hey man, it's a bunch of mook toks out here",
-            "mook tok",
-            "all these mook toks drivin today"
-        ],
-        "slots": []
-      }
-    ]
-  }
+exports.handler = function(event, context, callback) {
+    const alexa = Alexa.handler(event, context);
+    alexa.registerHandlers(handlers);
+    alexa.execute();
+};
+
+const handlers = {
+    'LaunchRequest': function () {
+        this.emit('WhatDoesDJSay');
+    },
+    'DJSaysMookTok': function () {
+        this.emit('WhatDoesDJSay')
+    },
+    'DJSaysMookTok': function () {
+        this.response.speak('A bunch of, Mook Toks out there');
+        this.emit(':responseReady');
+    },
+    'AMAZON.HelpIntent': function () {
+        const speechOutput = 'This is the DJ Says It All Sample Skill. ';
+        const reprompt = 'Ask what DJ says, to hear me speak.';
+
+        this.response.speak(speechOutput).listen(reprompt);
+        this.emit(':responseReady');
+    },
+    'AMAZON.CancelIntent': function () {
+        this.response.speak('Goodbye!');
+        this.emit(':responseReady');
+    },
+    'AMAZON.StopIntent': function () {
+        this.response.speak('See you later!');
+        this.emit(':responseReady');
+    }
+};
