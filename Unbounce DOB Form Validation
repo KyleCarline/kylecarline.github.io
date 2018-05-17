@@ -1,0 +1,13 @@
+<script>
+lp.jQuery(function($) {
+  var ruleID = 'dob'
+  var field = 'date_of_birth';
+  var message = 'Please enter a date in this format: MM/DD/YYYY';
+  var rules = module.lp.form.data.validationRules[field];
+  $.validator.addMethod(ruleID, function(value, field) {
+var valid = /^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/.test(value);
+return valid || (!rules.required && !value);
+}, message);
+rules[ruleID] = true;
+});
+</script>
