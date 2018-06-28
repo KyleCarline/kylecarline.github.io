@@ -1,0 +1,13 @@
+<script>
+lp.jQuery(function($) {
+  var ruleID = 'telefone';
+  var field = 'ddd__telefone';
+  var message = 'Inserir um telefone válido';
+  var rules = module.lp.form.data.validationRules[field];
+  $.validator.addMethod(ruleID, function(value, field) {
+        var valid = /^\+?\d{2}?\s*\(\d{2}\)?\s*\d{8,9}/.test(value);
+        return valid || (!rules.required && !value);
+        }, message);
+rules[ruleID] = true;
+});
+</script>
